@@ -1,4 +1,4 @@
-module SchemaComments::ActiveRecord::ConnectionAdapters
+module ActiveRecord::Comments::ConnectionAdapters
   class CommentDefinition < Struct.new(:adapter, :table, :column_name, :comment_text)
     def to_dump
       if table_comment?

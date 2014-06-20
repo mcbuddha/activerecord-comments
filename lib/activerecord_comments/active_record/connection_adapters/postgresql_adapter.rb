@@ -1,4 +1,4 @@
-module SchemaComments::ActiveRecord::ConnectionAdapters
+module ActiveRecord::Comments::ConnectionAdapters
   module PostgreSQLAdapter
     def comments_supported?
       true

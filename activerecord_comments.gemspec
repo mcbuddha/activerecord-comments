@@ -1,9 +1,9 @@
 # coding: utf-8
-require File.expand_path('../lib/schema_comments/version', __FILE__)
+require File.expand_path('../lib/activerecord_comments/version', __FILE__)
 
 Gem::Specification.new do |spec|
-  spec.name          = 'schema_comments'
-  spec.version       = SchemaComments::VERSION
+  spec.name          = 'activerecord_comments'
+  spec.version       = ActiveRecord::Comments::VERSION
   spec.authors       = ['Marton Somogyi']
   spec.email         = ['msomogyi@whitepages.com']
   spec.summary       = %q{Comments for SQL schemas}

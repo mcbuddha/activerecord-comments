@@ -2,7 +2,7 @@
 require 'yaml'
 require 'optparse'
 
-require 'schema_comments'
+require 'activerecord_comments'
 
 require 'pry'
 

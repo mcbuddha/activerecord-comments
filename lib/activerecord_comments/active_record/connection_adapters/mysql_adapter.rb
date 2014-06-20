@@ -1,4 +1,4 @@
-module SchemaComments::ActiveRecord::ConnectionAdapters
+module ActiveRecord::Comments::ConnectionAdapters
   module MysqlAdapter
     def comments_supported?
       true

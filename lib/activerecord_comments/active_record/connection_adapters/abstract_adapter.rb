@@ -1,4 +1,4 @@
-module SchemaComments::ActiveRecord::ConnectionAdapters
+module ActiveRecord::Comments::ConnectionAdapters
   module AbstractAdapter
     def set_table_comment(table_name, comment_text)
     end

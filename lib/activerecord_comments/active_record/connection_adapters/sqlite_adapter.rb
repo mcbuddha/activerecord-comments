@@ -1,6 +1,6 @@
-module SchemaComments::ActiveRecord::ConnectionAdapters
+module ActiveRecord::Comments::ConnectionAdapters
   module SQLiteAdapter
-    include SchemaComments::ActiveRecord::ConnectionAdapters::AbstractSQLiteAdapter
+    include ActiveRecord::Comments::ConnectionAdapters::AbstractSQLiteAdapter
 
     def create_table(table_name, options = {})
       td = ::ActiveRecord::ConnectionAdapters::TableDefinition.new(self)

@@ -1,4 +1,4 @@
-module SchemaComments::ActiveRecord::ConnectionAdapters
+module ActiveRecord::Comments::ConnectionAdapters
   module AbstractSQLiteAdapter
     def comments_supported?
       true

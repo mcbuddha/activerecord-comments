@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SchemaComments do
+describe ActiveRecord::Comments do
   describe '#setup' do
     subject { described_class.setup }
     it 'should include table methods' do

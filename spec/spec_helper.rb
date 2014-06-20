@@ -6,7 +6,7 @@ $:.push File.expand_path('../lib', __FILE__)
 DBCONF = YAML::load(IO.read(File.expand_path('../config/database.yml', __FILE__)))
 ENV['DB'] ||= 'postgres'
 
-require 'schema_comments'
+require 'activerecord_comments'
 
 RSpec.configure do |c|
   c.before(:suite) { ActiveRecord::Base.establish_connection(DBCONF[ENV['DB']]) }

@@ -1,6 +1,6 @@
-module SchemaComments::ActiveRecord::ConnectionAdapters
+module ActiveRecord::Comments::ConnectionAdapters
   module SQLite3Adapter
-    include SchemaComments::ActiveRecord::ConnectionAdapters::AbstractSQLiteAdapter
+    include ActiveRecord::Comments::ConnectionAdapters::AbstractSQLiteAdapter
 
     def create_table(table_name, options = {})
       td = create_table_definition table_name, options[:temporary], options[:options]
