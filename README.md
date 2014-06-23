@@ -1,6 +1,6 @@
-# Activerecord::Comments
+# ActiveRecord::Comments
 
-TODO: Write a gem description
+Manage comments for SQL schemas. Set, get and remove comments on tables and columns.
 
 ## Installation
 
@@ -18,12 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    activerecord_comments [options]
+        -t, --table TABLE                Select table
+        -c, --column COLUMN              Select column
+        -a, --action ACTION              Select action to perform
+                                         ["set", "retrieve", "remove"]
+        -m, --comment COMMENT            Comment to save
+            --conf DBCONF                Database config YAML
 
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/activerecord-comments/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
