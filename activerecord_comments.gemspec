@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['msomogyi@whitepages.com']
   spec.summary       = %q{Comments for SQL schemas}
   spec.description   = %q{Manage comments for SQL tables and columns}
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/mcbuddha/activerecord_comments'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -17,12 +17,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler', '~> 1.6'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rake', '~> 10'
+  spec.add_development_dependency 'rspec', '~> 3'
 
-  spec.add_development_dependency 'pg'
-  spec.add_development_dependency 'mysql2'
-  spec.add_development_dependency 'sqlite3'
+  spec.add_development_dependency 'pg', '~> 0.17'
+  spec.add_development_dependency 'mysql2', '~> 0'
+  spec.add_development_dependency 'sqlite3', '~> 0'
 
-  spec.add_runtime_dependency 'activerecord', '>= 2.3.2'
+  spec.add_runtime_dependency 'activerecord', '~> 2.3'
 end
