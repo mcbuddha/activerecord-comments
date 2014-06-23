@@ -1,36 +1,40 @@
 #!/usr/bin/env ruby
+require 'pry'
 require 'yaml'
 require 'optparse'
 
 require 'activerecord_comments'
 
-require 'pry'
-
-$: << File.expand_path('../lib', __FILE__)
-
-DBCONF = YAML::load(IO.read(File.expand_path('../../config/database.yml', __FILE__)))
 ENV['DB'] ||= 'postgres'
-
-ActiveRecord::Base.establish_connection(DBCONF[ENV['DB']])
 
 TYPES = %w(table column)
 ACTIONS = %w(set retrieve remove)
 
-options = {}
+options = {dbconf: File.expand_path('./config/database.yml', Dir.pwd)}
 OptionParser.new do |opts|
-  opts.on('--table TABLE', 'Select table') { |table| options[:table] = table }
-  opts.on('--column COLUMN', 'Select column') { |column| options[:column] = column }
-  opts.on('--action ACTION', ACTIONS, 'Select action to perform', ACTIONS.to_s) { |action| options[:action] = action }
-  opts.on('--comment COMMENT', 'Comment to save') { |comment| options[:comment] = comment }
+  opts.on('-t', '--table TABLE', 'Select table') { |table| options[:table] = table }
+  opts.on('-c', '--column COLUMN', 'Select column') { |column| options[:column] = column }
+  opts.on('-a', '--action ACTION', ACTIONS, 'Select action to perform', ACTIONS.to_s) { |action| options[:action] = action }
+  opts.on('-m', '--comment COMMENT', 'Comment to save') { |comment| options[:comment] = comment }
+  opts.on('--conf DBCONF', 'Database config YAML') { |dbconf| options[:dbconf] = dbconf }
 end.parse!
 
 abort 'You must specify a table' unless options[:table]
 abort 'You must specify an action' unless options[:action]
 abort 'You must specify a comment' if options[:action] == 'set' && options[:comment].nil?
 
+DBCONF = YAML::load IO.read options[:dbconf] rescue abort "Error reading #{options[:dbconf]}: #{$!}"
+
+ActiveRecord::Base.establish_connection(DBCONF[ENV['DB']]).connection rescue abort "Couldn't connect to #{options[:dbconf]}[#{ENV['DB']}]: #{$!}"
+
 command = "#{options[:action]}_#{options[:column] ? 'column':'table'}_comment"
 args = [options[:table].to_sym]
 args << options[:column].to_sym if options[:column]
 args << options[:comment] if options[:comment]
-result = ActiveRecord::Base.connection.send command, *args
-pp result if options[:action] == 'retrieve'
+
+begin
+  result = ActiveRecord::Base.connection.send command, *args
+  pp result if options[:action] == 'retrieve'
+rescue
+  abort "Error while executing query: #{$!}"
+end
