@@ -3,7 +3,7 @@ require 'pry'
 require 'yaml'
 require 'optparse'
 
-require 'activerecord_comments'
+require 'active_record/comments'
 
 ENV['DB'] ||= 'postgres'
 

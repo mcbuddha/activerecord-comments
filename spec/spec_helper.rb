@@ -3,7 +3,7 @@ $: << File.expand_path('../lib', __FILE__)
 require 'yaml'
 require 'pry'
 
-require 'activerecord_comments'
+require 'active_record/comments'
 
 DBCONF = YAML::load(IO.read(File.expand_path('../config/database.yml', __FILE__)))
 ENV['DB'] ||= 'postgres'

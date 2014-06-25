@@ -1,18 +1,18 @@
 require 'active_record'
 require 'active_support/inflector'
 
-require 'activerecord_comments/version'
+require 'active_record/comments/version'
 
 module ActiveRecord::Comments; end
 
-require 'activerecord_comments/active_record/connection_adapters/comment_definition'
-require 'activerecord_comments/active_record/connection_adapters/abstract_adapter'
-require 'activerecord_comments/active_record/connection_adapters/postgresql_adapter'
-require 'activerecord_comments/active_record/connection_adapters/abstract_sqlite_adapter'
-require 'activerecord_comments/active_record/connection_adapters/sqlite_adapter'
-require 'activerecord_comments/active_record/connection_adapters/sqlite3_adapter'
-require 'activerecord_comments/active_record/connection_adapters/mysql_adapter'
-require 'activerecord_comments/active_record/connection_adapters/mysql2_adapter'
+require 'active_record/comments/connection_adapters/comment_definition'
+require 'active_record/comments/connection_adapters/abstract_adapter'
+require 'active_record/comments/connection_adapters/postgresql_adapter'
+require 'active_record/comments/connection_adapters/abstract_sqlite_adapter'
+require 'active_record/comments/connection_adapters/sqlite_adapter'
+require 'active_record/comments/connection_adapters/sqlite3_adapter'
+require 'active_record/comments/connection_adapters/mysql_adapter'
+require 'active_record/comments/connection_adapters/mysql2_adapter'
 
 module ActiveRecord::Comments
   def self.setup

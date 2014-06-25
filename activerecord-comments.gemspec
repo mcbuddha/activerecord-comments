@@ -1,14 +1,14 @@
 # coding: utf-8
-require File.expand_path('../lib/activerecord_comments/version', __FILE__)
+require File.expand_path('../lib/active_record/comments/version', __FILE__)
 
 Gem::Specification.new do |spec|
-  spec.name          = 'activerecord_comments'
+  spec.name          = 'activerecord-comments'
   spec.version       = ActiveRecord::Comments::VERSION
   spec.authors       = ['Marton Somogyi']
   spec.email         = ['msomogyi@whitepages.com']
   spec.summary       = %q{Comments for SQL schemas}
   spec.description   = %q{Manage comments for SQL tables and columns}
-  spec.homepage      = 'https://github.com/mcbuddha/activerecord_comments'
+  spec.homepage      = 'https://github.com/mcbuddha/activerecord-comments'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
