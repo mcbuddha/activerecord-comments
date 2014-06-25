@@ -12,11 +12,15 @@ ACTIONS = %w(set retrieve remove)
 
 options = {dbconf: File.expand_path('./config/database.yml', Dir.pwd)}
 OptionParser.new do |opts|
+  opts.banner = <<USAGE
+Set the DB environment variable to select from database configurations. Current value: "#{ENV['DB']}"
+USAGE
+
+  opts.on('-a', '--action ACTION', ACTIONS, "Action to perform: #{ACTIONS.join(', ')}") { |action| options[:action] = action }
   opts.on('-t', '--table TABLE', 'Select table') { |table| options[:table] = table }
   opts.on('-c', '--column COLUMN', 'Select column') { |column| options[:column] = column }
-  opts.on('-a', '--action ACTION', ACTIONS, 'Select action to perform', ACTIONS.to_s) { |action| options[:action] = action }
   opts.on('-m', '--comment COMMENT', 'Comment to save') { |comment| options[:comment] = comment }
-  opts.on('--conf DBCONF', 'Database config YAML') { |dbconf| options[:dbconf] = dbconf }
+  opts.on('--conf DBCONF', "Database config YAML (default: #{options[:dbconf]})") { |dbconf| options[:dbconf] = dbconf }
 end.parse!
 
 abort 'You must specify a table' unless options[:table]
@@ -30,11 +34,11 @@ ActiveRecord::Base.establish_connection(DBCONF[ENV['DB']]).connection rescue abo
 command = "#{options[:action]}_#{options[:column] ? 'column':'table'}_comment"
 args = [options[:table].to_sym]
 args << options[:column].to_sym if options[:column]
-args << options[:comment] if options[:comment]
+args << options[:comment] if options[:comment] and options[:action] != 'retrieve'
 
 begin
   result = ActiveRecord::Base.connection.send command, *args
-  pp result if options[:action] == 'retrieve'
+  puts result if options[:action] == 'retrieve'
 rescue
   abort "Error while executing query: #{$!}"
 end
