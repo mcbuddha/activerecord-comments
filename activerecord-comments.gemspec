@@ -24,5 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'mysql2', '~> 0'
   spec.add_development_dependency 'sqlite3', '~> 0'
 
-  spec.add_runtime_dependency 'activerecord', '~> 3'
+  spec.add_runtime_dependency 'activerecord', '>= 3.0'
 end
